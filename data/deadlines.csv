@@ -1,0 +1,4 @@
+store,deadline,confirm_before,max_residual_probability,crew
+A,2026-09-06T18:00,2026-09-06T09:00,0.10,K1
+B,2026-09-06T18:00,2026-09-06T09:00,0.10,K1
+C,2026-09-07T18:00,2026-09-07T09:00,0.15,K1
