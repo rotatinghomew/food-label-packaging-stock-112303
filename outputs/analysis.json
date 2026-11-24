@@ -1,0 +1,3305 @@
+{
+  "report": {
+    "as_of": "2026-09-05T08:00:00",
+    "sku": "dr1",
+    "hq_summary": {
+      "sku": "dr1",
+      "sellable_by_store": {
+        "A": 60,
+        "B": 92,
+        "C": 125
+      },
+      "sellable_total": 277,
+      "in_transit_total": 14,
+      "inspection_total": 8,
+      "network_total": 291,
+      "global_sellable_old_range": [
+        94,
+        167
+      ],
+      "global_network_old_range": [
+        108,
+        167
+      ]
+    },
+    "insights": {
+      "largest_stock_ambiguity_slot": "s3",
+      "largest_stock_ambiguity_store": "C",
+      "shared_batch_source_slot": "s2",
+      "decision_rule": "先按 deadline/confirm_before 排序；同时展示存量宽度、调拨批次复用和班组重叠，不用预测代替零旧版实盘"
+    },
+    "stores": [
+      {
+        "store": "A",
+        "sku": "dr1",
+        "as_of": "2026-09-05T08:00:00",
+        "deadline": "2026-09-06T18:00:00",
+        "confirm_before": "2026-09-06T09:00:00",
+        "crew": "K1",
+        "hours_to_deadline_open": 20.0,
+        "stock": {
+          "store": "A",
+          "sku": "dr1",
+          "at": "2026-09-05T08:00:00",
+          "as_of": "2026-09-05T08:00:00",
+          "sellable_total": 60,
+          "old_min": 43,
+          "old_max": 43,
+          "confirmed_old": 43,
+          "possible_extra_old": 0,
+          "new_min": 17,
+          "new_max": 17,
+          "inspection_units": 0,
+          "exact": true
+        },
+        "demand": {
+          "model": "complete_trial_block_rate_scaled_to_open_hours",
+          "historical_days": 64,
+          "early_unavailable_days": 16,
+          "mean_units_per_hour": 3.7430555555555554,
+          "mean_demand": 74.87539173951048,
+          "quantiles": {
+            "0.05": 50.17255892255892,
+            "0.1": 56.23737373737373,
+            "0.15": 56.23737373737373,
+            "0.25": 64.50757575757575,
+            "0.5": 71.67508417508417,
+            "0.75": 84.53418803418803,
+            "0.85": 92.93162393162392,
+            "0.9": 94.05128205128204,
+            "0.95": 99.08974358974359
+          },
+          "basis": "historical.csv 的 observed/exposure_hours；短日不补零"
+        },
+        "residual_envelope": {
+          "combined_min": 0,
+          "combined_max": 4,
+          "stock_uncertainty_at_median_demand": [
+            0,
+            0
+          ],
+          "demand_uncertainty_at_mid_stock": [
+            0,
+            4
+          ],
+          "current_stock_width": 0
+        },
+        "risk": {
+          "mean_rate_hours_to_sell_old_max": 11.487940630797775,
+          "mean_rate_suggests_natural_sellout": true,
+          "prob_total_sellout_guarantees_no_old": 0.81185,
+          "prob_worst_case_residual": 0.18815,
+          "prob_possible_old_sellout_at_old_min": 1.0,
+          "risk_threshold": 0.1,
+          "risk_too_high_without_certified_count": true
+        },
+        "risk_adjusted_removal_reserve": 4,
+        "appointment_guard": {
+          "sellable_old_min": 43,
+          "unconfirmed_outgoing": [],
+          "cannot_cancel_as_zero": true,
+          "note": "在途/交接未确认批次不计入可售总量，但不能据此把原店撤签预约按零取消"
+        },
+        "exemption": {
+          "can_certify_zero": false,
+          "basis_count": null,
+          "reason": "没有 old=0 的已知实盘；预测或区间下界不能作为免撤依据"
+        }
+      },
+      {
+        "store": "B",
+        "sku": "dr1",
+        "as_of": "2026-09-05T08:00:00",
+        "deadline": "2026-09-06T18:00:00",
+        "confirm_before": "2026-09-06T09:00:00",
+        "crew": "K1",
+        "hours_to_deadline_open": 20.0,
+        "stock": {
+          "store": "B",
+          "sku": "dr1",
+          "at": "2026-09-05T08:00:00",
+          "as_of": "2026-09-05T08:00:00",
+          "sellable_total": 92,
+          "old_min": 19,
+          "old_max": 33,
+          "confirmed_old": 19,
+          "possible_extra_old": 14,
+          "new_min": 59,
+          "new_max": 73,
+          "inspection_units": 8,
+          "exact": false
+        },
+        "demand": {
+          "model": "complete_trial_block_rate_scaled_to_open_hours",
+          "historical_days": 64,
+          "early_unavailable_days": 16,
+          "mean_units_per_hour": 3.8819444444444446,
+          "mean_demand": 77.62706944444444,
+          "quantiles": {
+            "0.05": 57.77777777777778,
+            "0.1": 60.55555555555556,
+            "0.15": 61.66666666666667,
+            "0.25": 65.55555555555556,
+            "0.5": 81.11111111111111,
+            "0.75": 88.33333333333333,
+            "0.85": 90.0,
+            "0.9": 93.33333333333333,
+            "0.95": 96.66666666666666
+          },
+          "basis": "historical.csv 的 observed/exposure_hours；短日不补零"
+        },
+        "residual_envelope": {
+          "combined_min": 0,
+          "combined_max": 32,
+          "stock_uncertainty_at_median_demand": [
+            0,
+            11
+          ],
+          "demand_uncertainty_at_mid_stock": [
+            0,
+            26
+          ],
+          "current_stock_width": 14
+        },
+        "risk": {
+          "mean_rate_hours_to_sell_old_max": 8.500894454382825,
+          "mean_rate_suggests_natural_sellout": true,
+          "prob_total_sellout_guarantees_no_old": 0.126,
+          "prob_worst_case_residual": 0.874,
+          "prob_possible_old_sellout_at_old_min": 1.0,
+          "risk_threshold": 0.1,
+          "risk_too_high_without_certified_count": true
+        },
+        "risk_adjusted_removal_reserve": 32,
+        "appointment_guard": {
+          "sellable_old_min": 19,
+          "unconfirmed_outgoing": [
+            {
+              "shipment": "x2",
+              "qty": 14,
+              "old_range": [
+                0,
+                14
+              ],
+              "arrived": null
+            }
+          ],
+          "cannot_cancel_as_zero": true,
+          "note": "在途/交接未确认批次不计入可售总量，但不能据此把原店撤签预约按零取消"
+        },
+        "exemption": {
+          "can_certify_zero": false,
+          "basis_count": null,
+          "reason": "没有 old=0 的已知实盘；预测或区间下界不能作为免撤依据"
+        }
+      },
+      {
+        "store": "C",
+        "sku": "dr1",
+        "as_of": "2026-09-05T08:00:00",
+        "deadline": "2026-09-07T18:00:00",
+        "confirm_before": "2026-09-07T09:00:00",
+        "crew": "K1",
+        "hours_to_deadline_open": 30.0,
+        "stock": {
+          "store": "C",
+          "sku": "dr1",
+          "at": "2026-09-05T08:00:00",
+          "as_of": "2026-09-05T08:00:00",
+          "sellable_total": 125,
+          "old_min": 32,
+          "old_max": 91,
+          "confirmed_old": 32,
+          "possible_extra_old": 59,
+          "new_min": 34,
+          "new_max": 93,
+          "inspection_units": 0,
+          "exact": false
+        },
+        "demand": {
+          "model": "complete_trial_block_rate_scaled_to_open_hours",
+          "historical_days": 64,
+          "early_unavailable_days": 16,
+          "mean_units_per_hour": 3.71875,
+          "mean_demand": 111.6906875,
+          "quantiles": {
+            "0.05": 83.33333333333333,
+            "0.1": 86.66666666666667,
+            "0.15": 95.83333333333334,
+            "0.25": 101.66666666666667,
+            "0.5": 111.66666666666667,
+            "0.75": 125.83333333333334,
+            "0.85": 125.83333333333334,
+            "0.9": 130.83333333333334,
+            "0.95": 138.33333333333334
+          },
+          "basis": "historical.csv 的 observed/exposure_hours；短日不补零"
+        },
+        "residual_envelope": {
+          "combined_min": 0,
+          "combined_max": 30,
+          "stock_uncertainty_at_median_demand": [
+            0,
+            14
+          ],
+          "demand_uncertainty_at_mid_stock": [
+            0,
+            30
+          ],
+          "current_stock_width": 59
+        },
+        "risk": {
+          "mean_rate_hours_to_sell_old_max": 24.470588235294116,
+          "mean_rate_suggests_natural_sellout": true,
+          "prob_total_sellout_guarantees_no_old": 0.31555,
+          "prob_worst_case_residual": 0.68445,
+          "prob_possible_old_sellout_at_old_min": 1.0,
+          "risk_threshold": 0.15,
+          "risk_too_high_without_certified_count": true
+        },
+        "risk_adjusted_removal_reserve": 30,
+        "appointment_guard": {
+          "sellable_old_min": 32,
+          "unconfirmed_outgoing": [],
+          "cannot_cancel_as_zero": true,
+          "note": "在途/交接未确认批次不计入可售总量，但不能据此把原店撤签预约按零取消"
+        },
+        "exemption": {
+          "can_certify_zero": false,
+          "basis_count": null,
+          "reason": "没有 old=0 的已知实盘；预测或区间下界不能作为免撤依据"
+        }
+      }
+    ],
+    "count_slots": [
+      {
+        "slot": "s1",
+        "store": "A",
+        "opens": "2026-09-05T09:00:00",
+        "closes": "2026-09-05T10:00:00",
+        "max_units": 120,
+        "confirmed": true,
+        "crew": "K1",
+        "deadline": "2026-09-06T18:00:00",
+        "confirm_before": "2026-09-06T09:00:00",
+        "ready_before_confirm_deadline": true,
+        "capacity_ok": true,
+        "total_to_count": 60,
+        "old_range_at_slot": [
+          43,
+          43
+        ],
+        "new_pack_range_at_slot": [
+          17,
+          17
+        ],
+        "conditional_removal_reserve_range": [
+          10,
+          10
+        ],
+        "forecast_hours_after_count": 18.0,
+        "stock_ambiguity_units": 0,
+        "exact_old_at_slot": true,
+        "resolves_shipment_provenance": [],
+        "downstream_batch_reuse": [],
+        "information_note": "实盘将把当前旧/新总量范围收缩为一个确定分量，并把需求不确定性单独留下"
+      },
+      {
+        "slot": "s2",
+        "store": "B",
+        "opens": "2026-09-05T10:00:00",
+        "closes": "2026-09-05T11:00:00",
+        "max_units": 130,
+        "confirmed": false,
+        "crew": "K1",
+        "deadline": "2026-09-06T18:00:00",
+        "confirm_before": "2026-09-06T09:00:00",
+        "ready_before_confirm_deadline": true,
+        "capacity_ok": true,
+        "total_to_count": 92,
+        "old_range_at_slot": [
+          19,
+          33
+        ],
+        "new_pack_range_at_slot": [
+          59,
+          73
+        ],
+        "conditional_removal_reserve_range": [
+          19,
+          33
+        ],
+        "forecast_hours_after_count": 17.0,
+        "stock_ambiguity_units": 14,
+        "exact_old_at_slot": false,
+        "resolves_shipment_provenance": [
+          "x2"
+        ],
+        "downstream_batch_reuse": [
+          {
+            "shipment": "x2",
+            "downstream_store": "C",
+            "same_batch_count_can_be_reused": true,
+            "required_before_reuse": [
+              "source_actual_count_result_known",
+              "arrival_record",
+              "handoff_confirmation"
+            ],
+            "note": "来源店早盘厘清后，下游不必再为同一批货单独占盘点时段；但 C 自有库存仍需盘点"
+          }
+        ],
+        "information_note": "实盘将把当前旧/新总量范围收缩为一个确定分量，并把需求不确定性单独留下"
+      },
+      {
+        "slot": "s3",
+        "store": "C",
+        "opens": "2026-09-05T10:00:00",
+        "closes": "2026-09-05T11:00:00",
+        "max_units": 130,
+        "confirmed": false,
+        "crew": "K1",
+        "deadline": "2026-09-07T18:00:00",
+        "confirm_before": "2026-09-07T09:00:00",
+        "ready_before_confirm_deadline": true,
+        "capacity_ok": true,
+        "total_to_count": 125,
+        "old_range_at_slot": [
+          32,
+          91
+        ],
+        "new_pack_range_at_slot": [
+          34,
+          93
+        ],
+        "conditional_removal_reserve_range": [
+          32,
+          39
+        ],
+        "forecast_hours_after_count": 27.0,
+        "stock_ambiguity_units": 59,
+        "exact_old_at_slot": false,
+        "resolves_shipment_provenance": [],
+        "downstream_batch_reuse": [],
+        "information_note": "实盘将把当前旧/新总量范围收缩为一个确定分量，并把需求不确定性单独留下"
+      }
+    ],
+    "parallel_count_plan": {
+      "single_crew": false,
+      "selected_slots": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "selected": [
+        {
+          "slot": "s1",
+          "store": "A",
+          "opens": "2026-09-05T09:00:00",
+          "closes": "2026-09-05T10:00:00",
+          "max_units": 120,
+          "confirmed": true,
+          "crew": "K1",
+          "deadline": "2026-09-06T18:00:00",
+          "confirm_before": "2026-09-06T09:00:00",
+          "ready_before_confirm_deadline": true,
+          "capacity_ok": true,
+          "total_to_count": 60,
+          "old_range_at_slot": [
+            43,
+            43
+          ],
+          "new_pack_range_at_slot": [
+            17,
+            17
+          ],
+          "conditional_removal_reserve_range": [
+            10,
+            10
+          ],
+          "forecast_hours_after_count": 18.0,
+          "stock_ambiguity_units": 0,
+          "exact_old_at_slot": true,
+          "resolves_shipment_provenance": [],
+          "downstream_batch_reuse": [],
+          "information_note": "实盘将把当前旧/新总量范围收缩为一个确定分量，并把需求不确定性单独留下"
+        },
+        {
+          "slot": "s2",
+          "store": "B",
+          "opens": "2026-09-05T10:00:00",
+          "closes": "2026-09-05T11:00:00",
+          "max_units": 130,
+          "confirmed": false,
+          "crew": "K1",
+          "deadline": "2026-09-06T18:00:00",
+          "confirm_before": "2026-09-06T09:00:00",
+          "ready_before_confirm_deadline": true,
+          "capacity_ok": true,
+          "total_to_count": 92,
+          "old_range_at_slot": [
+            19,
+            33
+          ],
+          "new_pack_range_at_slot": [
+            59,
+            73
+          ],
+          "conditional_removal_reserve_range": [
+            19,
+            33
+          ],
+          "forecast_hours_after_count": 17.0,
+          "stock_ambiguity_units": 14,
+          "exact_old_at_slot": false,
+          "resolves_shipment_provenance": [
+            "x2"
+          ],
+          "downstream_batch_reuse": [
+            {
+              "shipment": "x2",
+              "downstream_store": "C",
+              "same_batch_count_can_be_reused": true,
+              "required_before_reuse": [
+                "source_actual_count_result_known",
+                "arrival_record",
+                "handoff_confirmation"
+              ],
+              "note": "来源店早盘厘清后，下游不必再为同一批货单独占盘点时段；但 C 自有库存仍需盘点"
+            }
+          ],
+          "information_note": "实盘将把当前旧/新总量范围收缩为一个确定分量，并把需求不确定性单独留下"
+        },
+        {
+          "slot": "s3",
+          "store": "C",
+          "opens": "2026-09-05T10:00:00",
+          "closes": "2026-09-05T11:00:00",
+          "max_units": 130,
+          "confirmed": false,
+          "crew": "K1",
+          "deadline": "2026-09-07T18:00:00",
+          "confirm_before": "2026-09-07T09:00:00",
+          "ready_before_confirm_deadline": true,
+          "capacity_ok": true,
+          "total_to_count": 125,
+          "old_range_at_slot": [
+            32,
+            91
+          ],
+          "new_pack_range_at_slot": [
+            34,
+            93
+          ],
+          "conditional_removal_reserve_range": [
+            32,
+            39
+          ],
+          "forecast_hours_after_count": 27.0,
+          "stock_ambiguity_units": 59,
+          "exact_old_at_slot": false,
+          "resolves_shipment_provenance": [],
+          "downstream_batch_reuse": [],
+          "information_note": "实盘将把当前旧/新总量范围收缩为一个确定分量，并把需求不确定性单独留下"
+        }
+      ],
+      "feasible_alternatives": [
+        {
+          "slots": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "score": [
+            2066.5593129361246,
+            78.0
+          ],
+          "optional_slots": [
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "slots": [
+            "s1",
+            "s2"
+          ],
+          "score": [
+            1449.2753623188405,
+            19.0
+          ],
+          "optional_slots": [
+            "s2"
+          ]
+        },
+        {
+          "slots": [
+            "s1",
+            "s3"
+          ],
+          "score": [
+            1341.921631776704,
+            59.0
+          ],
+          "optional_slots": [
+            "s3"
+          ]
+        },
+        {
+          "slots": [
+            "s1"
+          ],
+          "score": [
+            724.6376811594203,
+            0.0
+          ],
+          "optional_slots": []
+        }
+      ],
+      "locked_confirmed_slots": [
+        "s1"
+      ]
+    },
+    "single_crew_count_plan": {
+      "single_crew": true,
+      "selected_slots": [
+        "s1",
+        "s2"
+      ],
+      "selected": [
+        {
+          "slot": "s1",
+          "store": "A",
+          "opens": "2026-09-05T09:00:00",
+          "closes": "2026-09-05T10:00:00",
+          "max_units": 120,
+          "confirmed": true,
+          "crew": "K1",
+          "deadline": "2026-09-06T18:00:00",
+          "confirm_before": "2026-09-06T09:00:00",
+          "ready_before_confirm_deadline": true,
+          "capacity_ok": true,
+          "total_to_count": 60,
+          "old_range_at_slot": [
+            43,
+            43
+          ],
+          "new_pack_range_at_slot": [
+            17,
+            17
+          ],
+          "conditional_removal_reserve_range": [
+            10,
+            10
+          ],
+          "forecast_hours_after_count": 18.0,
+          "stock_ambiguity_units": 0,
+          "exact_old_at_slot": true,
+          "resolves_shipment_provenance": [],
+          "downstream_batch_reuse": [],
+          "information_note": "实盘将把当前旧/新总量范围收缩为一个确定分量，并把需求不确定性单独留下"
+        },
+        {
+          "slot": "s2",
+          "store": "B",
+          "opens": "2026-09-05T10:00:00",
+          "closes": "2026-09-05T11:00:00",
+          "max_units": 130,
+          "confirmed": false,
+          "crew": "K1",
+          "deadline": "2026-09-06T18:00:00",
+          "confirm_before": "2026-09-06T09:00:00",
+          "ready_before_confirm_deadline": true,
+          "capacity_ok": true,
+          "total_to_count": 92,
+          "old_range_at_slot": [
+            19,
+            33
+          ],
+          "new_pack_range_at_slot": [
+            59,
+            73
+          ],
+          "conditional_removal_reserve_range": [
+            19,
+            33
+          ],
+          "forecast_hours_after_count": 17.0,
+          "stock_ambiguity_units": 14,
+          "exact_old_at_slot": false,
+          "resolves_shipment_provenance": [
+            "x2"
+          ],
+          "downstream_batch_reuse": [
+            {
+              "shipment": "x2",
+              "downstream_store": "C",
+              "same_batch_count_can_be_reused": true,
+              "required_before_reuse": [
+                "source_actual_count_result_known",
+                "arrival_record",
+                "handoff_confirmation"
+              ],
+              "note": "来源店早盘厘清后，下游不必再为同一批货单独占盘点时段；但 C 自有库存仍需盘点"
+            }
+          ],
+          "information_note": "实盘将把当前旧/新总量范围收缩为一个确定分量，并把需求不确定性单独留下"
+        }
+      ],
+      "feasible_alternatives": [
+        {
+          "slots": [
+            "s1",
+            "s2"
+          ],
+          "score": [
+            1449.2753623188405,
+            19.0
+          ],
+          "optional_slots": [
+            "s2"
+          ]
+        },
+        {
+          "slots": [
+            "s1",
+            "s3"
+          ],
+          "score": [
+            1341.921631776704,
+            59.0
+          ],
+          "optional_slots": [
+            "s3"
+          ]
+        },
+        {
+          "slots": [
+            "s1"
+          ],
+          "score": [
+            724.6376811594203,
+            0.0
+          ],
+          "optional_slots": []
+        }
+      ],
+      "locked_confirmed_slots": [
+        "s1"
+      ]
+    },
+    "vehicles": {
+      "vehicles": [
+        {
+          "slot": "s4",
+          "region_or_store": "东",
+          "window": [
+            "2026-09-06T15:00:00",
+            "2026-09-06T18:00:00"
+          ],
+          "capacity": 62,
+          "confirmed": true,
+          "remaining_capacity": 0,
+          "undiscounted_current_old_max_total": 167,
+          "undiscounted_capacity_shortfall": 105,
+          "allocations": [
+            {
+              "vehicle_slot": "s4",
+              "region_or_store": "东",
+              "store": "A",
+              "requested_reserve": 4,
+              "current_old_max": 43,
+              "confirmation_deadline": "2026-09-06T09:00:00",
+              "latest_confirmation_before_vehicle_open": true,
+              "conservative_reserve_without_late_confirmation": 43,
+              "allocated": 4,
+              "unmet": 0,
+              "deadline": "2026-09-06T18:00:00"
+            },
+            {
+              "vehicle_slot": "s4",
+              "region_or_store": "东",
+              "store": "B",
+              "requested_reserve": 32,
+              "current_old_max": 33,
+              "confirmation_deadline": "2026-09-06T09:00:00",
+              "latest_confirmation_before_vehicle_open": true,
+              "conservative_reserve_without_late_confirmation": 33,
+              "allocated": 32,
+              "unmet": 0,
+              "deadline": "2026-09-06T18:00:00"
+            },
+            {
+              "vehicle_slot": "s4",
+              "region_or_store": "东",
+              "store": "C",
+              "requested_reserve": 30,
+              "current_old_max": 91,
+              "confirmation_deadline": "2026-09-07T09:00:00",
+              "latest_confirmation_before_vehicle_open": false,
+              "conservative_reserve_without_late_confirmation": 91,
+              "allocated": 26,
+              "unmet": 4,
+              "deadline": "2026-09-07T18:00:00"
+            }
+          ]
+        }
+      ],
+      "warnings": [
+        "s4 早于 C 的最晚确认期限 2026-09-07T09:00:00；若要装该车，必须在发车前提前取得盘点/补充确认，否则应按当前旧版上限做保守预留或另排车辆",
+        "s4 容量不足：C 仍有 4 件风险预留缺口",
+        "s4 若完全不确认自然销售，当前旧版上限合计 167 件，超过容量 62 件；必须利用盘点后的确认窗口更新预留，不能直接按最大上限派车"
+      ],
+      "constraints": [
+        "s1 已确认（2026-09-05T09:00:00–2026-09-05T10:00:00，容量 120），替代安排不能假定其不存在",
+        "s4 已确认（2026-09-06T15:00:00–2026-09-06T18:00:00，容量 62），替代安排不能假定其不存在"
+      ]
+    },
+    "demand_backtest": {
+      "rolling": {
+        "n": 36,
+        "mae": 19.605555555555554,
+        "rmse": 23.582461049173865,
+        "median_abs_pct_error": 0.1398982493557273,
+        "bias": -0.1462962962962951,
+        "coverage_90": 0.6388888888888888,
+        "coverage_80": 0.6111111111111112,
+        "items": [
+          {
+            "store": "A",
+            "trial": "v5",
+            "actual": 130.0,
+            "pred_p05": 112.33333333333334,
+            "pred_p10": 119.4,
+            "pred_p50": 144.0,
+            "pred_p90": 165.0,
+            "pred_p95": 170.0,
+            "error": 14.0,
+            "abs_error": 14.0,
+            "pct_error": 0.1076923076923077,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v6",
+            "actual": 124.0,
+            "pred_p05": 110.0,
+            "pred_p10": 116.66666666666666,
+            "pred_p50": 141.0,
+            "pred_p90": 162.0,
+            "pred_p95": 167.2,
+            "error": 17.0,
+            "abs_error": 17.0,
+            "pct_error": 0.13709677419354838,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v7",
+            "actual": 168.0,
+            "pred_p05": 107.66666666666667,
+            "pred_p10": 114.6,
+            "pred_p50": 138.66666666666666,
+            "pred_p90": 160.0,
+            "pred_p95": 165.4,
+            "error": -29.333333333333343,
+            "abs_error": 29.333333333333343,
+            "pct_error": -0.17460317460317465,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v8",
+            "actual": 151.0,
+            "pred_p05": 112.0,
+            "pred_p10": 118.8,
+            "pred_p50": 142.73333333333335,
+            "pred_p90": 164.0,
+            "pred_p95": 168.6,
+            "error": -8.266666666666652,
+            "abs_error": 8.266666666666652,
+            "pct_error": -0.05474613686534206,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v9",
+            "actual": 122.0,
+            "pred_p05": 112.6,
+            "pred_p10": 119.4,
+            "pred_p50": 143.33333333333334,
+            "pred_p90": 165.0,
+            "pred_p95": 170.0,
+            "error": 21.333333333333343,
+            "abs_error": 21.333333333333343,
+            "pct_error": 0.17486338797814216,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v10",
+            "actual": 102.0,
+            "pred_p05": 110.46666666666667,
+            "pred_p10": 117.0,
+            "pred_p50": 141.0,
+            "pred_p90": 163.0,
+            "pred_p95": 168.13333333333333,
+            "error": 39.0,
+            "abs_error": 39.0,
+            "pct_error": 0.38235294117647056,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v11",
+            "actual": 117.0,
+            "pred_p05": 107.2,
+            "pred_p10": 113.6,
+            "pred_p50": 137.33333333333334,
+            "pred_p90": 160.0,
+            "pred_p95": 165.8,
+            "error": 20.333333333333343,
+            "abs_error": 20.333333333333343,
+            "pct_error": 0.17378917378917386,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v12",
+            "actual": 137.0,
+            "pred_p05": 106.6,
+            "pred_p10": 112.6,
+            "pred_p50": 135.8,
+            "pred_p90": 158.0,
+            "pred_p95": 163.8,
+            "error": -1.1999999999999886,
+            "abs_error": 1.1999999999999886,
+            "pct_error": -0.008759124087591158,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v13",
+            "actual": 91.0,
+            "pred_p05": 107.0,
+            "pred_p10": 113.06666666666666,
+            "pred_p50": 135.66666666666666,
+            "pred_p90": 157.73333333333335,
+            "pred_p95": 163.0,
+            "error": 44.66666666666666,
+            "abs_error": 44.66666666666666,
+            "pct_error": 0.49084249084249076,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v14",
+            "actual": 166.0,
+            "pred_p05": 103.33333333333334,
+            "pred_p10": 109.4,
+            "pred_p50": 132.2,
+            "pred_p90": 155.13333333333333,
+            "pred_p95": 161.4,
+            "error": -33.80000000000001,
+            "abs_error": 33.80000000000001,
+            "pct_error": -0.20361445783132537,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v15",
+            "actual": 130.0,
+            "pred_p05": 105.0,
+            "pred_p10": 111.4,
+            "pred_p50": 134.66666666666666,
+            "pred_p90": 157.66666666666666,
+            "pred_p95": 163.8,
+            "error": 4.666666666666657,
+            "abs_error": 4.666666666666657,
+            "pct_error": 0.035897435897435825,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v16",
+            "actual": 143.0,
+            "pred_p05": 104.13,
+            "pred_p10": 110.66666666666666,
+            "pred_p50": 134.33333333333334,
+            "pred_p90": 157.66666666666666,
+            "pred_p95": 163.66666666666666,
+            "error": -8.666666666666657,
+            "abs_error": 8.666666666666657,
+            "pct_error": -0.06060606060606054,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v5",
+            "actual": 118.0,
+            "pred_p05": 99.0,
+            "pred_p10": 103.2,
+            "pred_p50": 120.33333333333334,
+            "pred_p90": 139.0,
+            "pred_p95": 144.13333333333335,
+            "error": 2.333333333333343,
+            "abs_error": 2.333333333333343,
+            "pct_error": 0.01977401129943511,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v6",
+            "actual": 146.0,
+            "pred_p05": 100.66666666666667,
+            "pred_p10": 104.8,
+            "pred_p50": 119.66666666666666,
+            "pred_p90": 136.66666666666666,
+            "pred_p95": 141.66666666666666,
+            "error": -26.333333333333343,
+            "abs_error": 26.333333333333343,
+            "pct_error": -0.18036529680365304,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v7",
+            "actual": 162.0,
+            "pred_p05": 102.0,
+            "pred_p10": 106.33333333333334,
+            "pred_p50": 124.0,
+            "pred_p90": 143.66666666666666,
+            "pred_p95": 149.0,
+            "error": -38.0,
+            "abs_error": 38.0,
+            "pct_error": -0.2345679012345679,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v8",
+            "actual": 159.0,
+            "pred_p05": 105.4,
+            "pred_p10": 110.4,
+            "pred_p50": 129.8,
+            "pred_p90": 150.0,
+            "pred_p95": 155.2,
+            "error": -29.19999999999999,
+            "abs_error": 29.19999999999999,
+            "pct_error": -0.1836477987421383,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v9",
+            "actual": 174.0,
+            "pred_p05": 108.0,
+            "pred_p10": 113.0,
+            "pred_p50": 133.0,
+            "pred_p90": 153.2,
+            "pred_p95": 158.73333333333335,
+            "error": -41.0,
+            "abs_error": 41.0,
+            "pct_error": -0.23563218390804597,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v10",
+            "actual": 146.0,
+            "pred_p05": 111.13333333333334,
+            "pred_p10": 117.0,
+            "pred_p50": 137.8,
+            "pred_p90": 158.53333333333333,
+            "pred_p95": 163.8,
+            "error": -8.199999999999989,
+            "abs_error": 8.199999999999989,
+            "pct_error": -0.05616438356164376,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v11",
+            "actual": 146.0,
+            "pred_p05": 112.0,
+            "pred_p10": 118.0,
+            "pred_p50": 138.66666666666669,
+            "pred_p90": 159.0,
+            "pred_p95": 164.33333333333334,
+            "error": -7.333333333333314,
+            "abs_error": 7.333333333333314,
+            "pct_error": -0.05022831050228298,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v12",
+            "actual": 151.0,
+            "pred_p05": 113.4,
+            "pred_p10": 119.2,
+            "pred_p50": 139.4,
+            "pred_p90": 158.8,
+            "pred_p95": 163.8,
+            "error": -11.599999999999994,
+            "abs_error": 11.599999999999994,
+            "pct_error": -0.07682119205298009,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v13",
+            "actual": 118.0,
+            "pred_p05": 113.4,
+            "pred_p10": 119.2,
+            "pred_p50": 140.0,
+            "pred_p90": 160.13333333333335,
+            "pred_p95": 165.33333333333334,
+            "error": 22.0,
+            "abs_error": 22.0,
+            "pct_error": 0.1864406779661017,
+            "covered_90": true,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v14",
+            "actual": 156.0,
+            "pred_p05": 111.66666666666667,
+            "pred_p10": 117.33333333333334,
+            "pred_p50": 138.8,
+            "pred_p90": 159.33333333333334,
+            "pred_p95": 164.73333333333335,
+            "error": -17.19999999999999,
+            "abs_error": 17.19999999999999,
+            "pct_error": -0.11025641025641018,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v15",
+            "actual": 111.0,
+            "pred_p05": 112.8,
+            "pred_p10": 118.6,
+            "pred_p50": 140.0,
+            "pred_p90": 160.33333333333334,
+            "pred_p95": 165.6,
+            "error": 29.0,
+            "abs_error": 29.0,
+            "pct_error": 0.26126126126126126,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v16",
+            "actual": 168.0,
+            "pred_p05": 111.0,
+            "pred_p10": 117.0,
+            "pred_p50": 138.26666666666665,
+            "pred_p90": 159.0,
+            "pred_p95": 164.4,
+            "error": -29.73333333333335,
+            "abs_error": 29.73333333333335,
+            "pct_error": -0.17698412698412708,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v5",
+            "actual": 100.0,
+            "pred_p05": 113.86666666666666,
+            "pred_p10": 120.73333333333332,
+            "pred_p50": 146.33333333333334,
+            "pred_p90": 171.66666666666666,
+            "pred_p95": 179.0,
+            "error": 46.33333333333334,
+            "abs_error": 46.33333333333334,
+            "pct_error": 0.46333333333333343,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v6",
+            "actual": 151.0,
+            "pred_p05": 104.86666666666667,
+            "pred_p10": 111.2,
+            "pred_p50": 137.33333333333334,
+            "pred_p90": 164.2,
+            "pred_p95": 171.2,
+            "error": -13.666666666666657,
+            "abs_error": 13.666666666666657,
+            "pct_error": -0.09050772626931561,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v7",
+            "actual": 128.0,
+            "pred_p05": 109.0,
+            "pred_p10": 115.2,
+            "pred_p50": 139.33333333333334,
+            "pred_p90": 164.0,
+            "pred_p95": 170.8,
+            "error": 11.333333333333343,
+            "abs_error": 11.333333333333343,
+            "pct_error": 0.08854166666666674,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v8",
+            "actual": 121.0,
+            "pred_p05": 109.26666666666667,
+            "pred_p10": 115.0,
+            "pred_p50": 138.26666666666665,
+            "pred_p90": 162.2,
+            "pred_p95": 168.66666666666666,
+            "error": 17.26666666666665,
+            "abs_error": 17.26666666666665,
+            "pct_error": 0.14269972451790622,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v9",
+            "actual": 104.0,
+            "pred_p05": 106.8,
+            "pred_p10": 112.79333333333334,
+            "pred_p50": 136.0,
+            "pred_p90": 160.06666666666666,
+            "pred_p95": 166.8,
+            "error": 32.0,
+            "abs_error": 32.0,
+            "pct_error": 0.3076923076923077,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v10",
+            "actual": 122.0,
+            "pred_p05": 104.0,
+            "pred_p10": 109.66,
+            "pred_p50": 132.33333333333334,
+            "pred_p90": 156.66666666666666,
+            "pred_p95": 163.2,
+            "error": 10.333333333333343,
+            "abs_error": 10.333333333333343,
+            "pct_error": 0.08469945355191265,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v11",
+            "actual": 135.0,
+            "pred_p05": 104.4,
+            "pred_p10": 109.86666666666666,
+            "pred_p50": 131.2,
+            "pred_p90": 155.0,
+            "pred_p95": 161.6,
+            "error": -3.8000000000000114,
+            "abs_error": 3.8000000000000114,
+            "pct_error": -0.02814814814814823,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v12",
+            "actual": 130.0,
+            "pred_p05": 104.86666666666667,
+            "pred_p10": 110.2,
+            "pred_p50": 131.66666666666666,
+            "pred_p90": 154.66666666666669,
+            "pred_p95": 161.2,
+            "error": 1.6666666666666572,
+            "abs_error": 1.6666666666666572,
+            "pct_error": 0.012820512820512747,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v13",
+            "actual": 134.0,
+            "pred_p05": 104.0,
+            "pred_p10": 109.4,
+            "pred_p50": 131.6,
+            "pred_p90": 154.66666666666666,
+            "pred_p95": 161.0,
+            "error": -2.4000000000000057,
+            "abs_error": 2.4000000000000057,
+            "pct_error": -0.017910447761194073,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v14",
+            "actual": 115.0,
+            "pred_p05": 105.0,
+            "pred_p10": 110.4,
+            "pred_p50": 132.0,
+            "pred_p90": 154.6,
+            "pred_p95": 160.4,
+            "error": 17.0,
+            "abs_error": 17.0,
+            "pct_error": 0.14782608695652175,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v15",
+            "actual": 166.0,
+            "pred_p05": 104.2,
+            "pred_p10": 109.8,
+            "pred_p50": 131.0,
+            "pred_p90": 153.4,
+            "pred_p95": 159.6,
+            "error": -35.0,
+            "abs_error": 35.0,
+            "pct_error": -0.21084337349397592,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v16",
+            "actual": 144.0,
+            "pred_p05": 106.0,
+            "pred_p10": 111.6,
+            "pred_p50": 133.2,
+            "pred_p90": 155.86666666666667,
+            "pred_p95": 162.0,
+            "error": -10.800000000000011,
+            "abs_error": 10.800000000000011,
+            "pct_error": -0.07500000000000008,
+            "covered_90": true,
+            "covered_80": true
+          }
+        ]
+      },
+      "leave_one_trial_out": {
+        "n": 48,
+        "mae": 19.477777777777778,
+        "rmse": 23.249782953984916,
+        "median_abs_pct_error": 0.12030905077262696,
+        "bias": 0.04444444444444547,
+        "coverage_90": 0.6875,
+        "coverage_80": 0.6041666666666666,
+        "items": [
+          {
+            "store": "A",
+            "trial": "v1",
+            "actual": 102.0,
+            "pred_p05": 107.6,
+            "pred_p10": 113.86666666666666,
+            "pred_p50": 136.8,
+            "pred_p90": 159.0,
+            "pred_p95": 165.0,
+            "error": 34.80000000000001,
+            "abs_error": 34.80000000000001,
+            "pct_error": 0.3411764705882354,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v2",
+            "actual": 132.0,
+            "pred_p05": 105.0,
+            "pred_p10": 111.33333333333334,
+            "pred_p50": 135.13333333333333,
+            "pred_p90": 158.4,
+            "pred_p95": 164.53333333333333,
+            "error": 3.1333333333333258,
+            "abs_error": 3.1333333333333258,
+            "pct_error": 0.02373737373737368,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v3",
+            "actual": 164.0,
+            "pred_p05": 104.2,
+            "pred_p10": 110.26666666666665,
+            "pred_p50": 133.33333333333334,
+            "pred_p90": 156.0,
+            "pred_p95": 161.8,
+            "error": -30.666666666666657,
+            "abs_error": 30.666666666666657,
+            "pct_error": -0.18699186991869912,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v4",
+            "actual": 177.0,
+            "pred_p05": 103.46666666666667,
+            "pred_p10": 109.33333333333334,
+            "pred_p50": 131.86666666666667,
+            "pred_p90": 154.33333333333334,
+            "pred_p95": 160.26666666666665,
+            "error": -45.133333333333326,
+            "abs_error": 45.133333333333326,
+            "pct_error": -0.2549905838041431,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v5",
+            "actual": 130.0,
+            "pred_p05": 105.8,
+            "pred_p10": 112.0,
+            "pred_p50": 135.33333333333334,
+            "pred_p90": 158.0,
+            "pred_p95": 164.0,
+            "error": 5.333333333333343,
+            "abs_error": 5.333333333333343,
+            "pct_error": 0.0410256410256411,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v6",
+            "actual": 124.0,
+            "pred_p05": 106.0,
+            "pred_p10": 112.33333333333333,
+            "pred_p50": 135.6,
+            "pred_p90": 158.06666666666666,
+            "pred_p95": 164.0,
+            "error": 11.599999999999994,
+            "abs_error": 11.599999999999994,
+            "pct_error": 0.09354838709677414,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v7",
+            "actual": 168.0,
+            "pred_p05": 103.66666666666666,
+            "pred_p10": 110.0,
+            "pred_p50": 132.66666666666669,
+            "pred_p90": 155.66666666666666,
+            "pred_p95": 161.66666666666666,
+            "error": -35.333333333333314,
+            "abs_error": 35.333333333333314,
+            "pct_error": -0.2103174603174602,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v8",
+            "actual": 151.0,
+            "pred_p05": 104.6,
+            "pred_p10": 110.8,
+            "pred_p50": 134.0,
+            "pred_p90": 156.46666666666667,
+            "pred_p95": 162.4,
+            "error": -17.0,
+            "abs_error": 17.0,
+            "pct_error": -0.11258278145695365,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v9",
+            "actual": 122.0,
+            "pred_p05": 105.93333333333334,
+            "pred_p10": 112.06666666666666,
+            "pred_p50": 135.8,
+            "pred_p90": 158.53333333333333,
+            "pred_p95": 164.2,
+            "error": 13.800000000000011,
+            "abs_error": 13.800000000000011,
+            "pct_error": 0.11311475409836075,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v10",
+            "actual": 102.0,
+            "pred_p05": 107.6,
+            "pred_p10": 114.0,
+            "pred_p50": 137.0,
+            "pred_p90": 159.66666666666666,
+            "pred_p95": 165.2,
+            "error": 35.0,
+            "abs_error": 35.0,
+            "pct_error": 0.3431372549019608,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v11",
+            "actual": 117.0,
+            "pred_p05": 106.0,
+            "pred_p10": 112.4,
+            "pred_p50": 136.2,
+            "pred_p90": 159.0,
+            "pred_p95": 164.8,
+            "error": 19.19999999999999,
+            "abs_error": 19.19999999999999,
+            "pct_error": 0.16410256410256402,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v12",
+            "actual": 137.0,
+            "pred_p05": 104.73333333333333,
+            "pred_p10": 111.0,
+            "pred_p50": 134.66666666666669,
+            "pred_p90": 157.8,
+            "pred_p95": 163.8,
+            "error": -2.3333333333333144,
+            "abs_error": 2.3333333333333144,
+            "pct_error": -0.017031630170316163,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v13",
+            "actual": 91.0,
+            "pred_p05": 108.66666666666666,
+            "pred_p10": 115.0,
+            "pred_p50": 137.8,
+            "pred_p90": 159.6,
+            "pred_p95": 165.0,
+            "error": 46.80000000000001,
+            "abs_error": 46.80000000000001,
+            "pct_error": 0.5142857142857145,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v14",
+            "actual": 166.0,
+            "pred_p05": 104.0,
+            "pred_p10": 110.0,
+            "pred_p50": 132.8,
+            "pred_p90": 155.4,
+            "pred_p95": 161.0,
+            "error": -33.19999999999999,
+            "abs_error": 33.19999999999999,
+            "pct_error": -0.19999999999999993,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "A",
+            "trial": "v15",
+            "actual": 130.0,
+            "pred_p05": 106.0,
+            "pred_p10": 112.0,
+            "pred_p50": 135.0,
+            "pred_p90": 157.8,
+            "pred_p95": 164.0,
+            "error": 5.0,
+            "abs_error": 5.0,
+            "pct_error": 0.038461538461538464,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "A",
+            "trial": "v16",
+            "actual": 143.0,
+            "pred_p05": 104.33333333333334,
+            "pred_p10": 110.73333333333333,
+            "pred_p50": 134.0,
+            "pred_p90": 157.13333333333333,
+            "pred_p95": 163.26666666666665,
+            "error": -9.0,
+            "abs_error": 9.0,
+            "pct_error": -0.06293706293706294,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v1",
+            "actual": 109.0,
+            "pred_p05": 114.26666666666665,
+            "pred_p10": 120.4,
+            "pred_p50": 142.0,
+            "pred_p90": 162.2,
+            "pred_p95": 168.0,
+            "error": 33.0,
+            "abs_error": 33.0,
+            "pct_error": 0.30275229357798167,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v2",
+            "actual": 120.0,
+            "pred_p05": 112.6,
+            "pred_p10": 119.0,
+            "pred_p50": 141.0,
+            "pred_p90": 161.93333333333334,
+            "pred_p95": 167.2,
+            "error": 21.0,
+            "abs_error": 21.0,
+            "pct_error": 0.175,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v3",
+            "actual": 148.0,
+            "pred_p05": 111.0,
+            "pred_p10": 117.0,
+            "pred_p50": 139.2,
+            "pred_p90": 160.6,
+            "pred_p95": 166.0,
+            "error": -8.800000000000011,
+            "abs_error": 8.800000000000011,
+            "pct_error": -0.05945945945945954,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v4",
+            "actual": 104.0,
+            "pred_p05": 114.66666666666667,
+            "pred_p10": 120.73333333333333,
+            "pred_p50": 142.33333333333334,
+            "pred_p90": 162.4,
+            "pred_p95": 168.0,
+            "error": 38.33333333333334,
+            "abs_error": 38.33333333333334,
+            "pct_error": 0.36858974358974367,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v5",
+            "actual": 118.0,
+            "pred_p05": 112.33333333333334,
+            "pred_p10": 118.73333333333335,
+            "pred_p50": 141.4,
+            "pred_p90": 162.4,
+            "pred_p95": 167.8,
+            "error": 23.400000000000006,
+            "abs_error": 23.400000000000006,
+            "pct_error": 0.19830508474576275,
+            "covered_90": true,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v6",
+            "actual": 146.0,
+            "pred_p05": 111.66666666666666,
+            "pred_p10": 117.6,
+            "pred_p50": 139.0,
+            "pred_p90": 160.0,
+            "pred_p95": 165.33333333333334,
+            "error": -7.0,
+            "abs_error": 7.0,
+            "pct_error": -0.04794520547945205,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v7",
+            "actual": 162.0,
+            "pred_p05": 110.73333333333333,
+            "pred_p10": 116.66666666666667,
+            "pred_p50": 138.26666666666665,
+            "pred_p90": 159.6,
+            "pred_p95": 165.0,
+            "error": -23.73333333333335,
+            "abs_error": 23.73333333333335,
+            "pct_error": -0.1465020576131688,
+            "covered_90": true,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v8",
+            "actual": 159.0,
+            "pred_p05": 110.66666666666667,
+            "pred_p10": 116.8,
+            "pred_p50": 138.6,
+            "pred_p90": 159.46666666666667,
+            "pred_p95": 165.0,
+            "error": -20.400000000000006,
+            "abs_error": 20.400000000000006,
+            "pct_error": -0.12830188679245286,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v9",
+            "actual": 174.0,
+            "pred_p05": 109.93333333333334,
+            "pred_p10": 115.66666666666666,
+            "pred_p50": 137.4,
+            "pred_p90": 158.2,
+            "pred_p95": 163.73333333333335,
+            "error": -36.599999999999994,
+            "abs_error": 36.599999999999994,
+            "pct_error": -0.21034482758620687,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v10",
+            "actual": 146.0,
+            "pred_p05": 111.0,
+            "pred_p10": 117.0,
+            "pred_p50": 139.4,
+            "pred_p90": 160.4,
+            "pred_p95": 165.73333333333335,
+            "error": -6.599999999999994,
+            "abs_error": 6.599999999999994,
+            "pct_error": -0.045205479452054755,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v11",
+            "actual": 146.0,
+            "pred_p05": 110.66666666666666,
+            "pred_p10": 116.93333333333334,
+            "pred_p50": 139.13333333333333,
+            "pred_p90": 161.0,
+            "pred_p95": 166.8,
+            "error": -6.866666666666674,
+            "abs_error": 6.866666666666674,
+            "pct_error": -0.04703196347031969,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v12",
+            "actual": 151.0,
+            "pred_p05": 112.0,
+            "pred_p10": 117.79333333333334,
+            "pred_p50": 139.4,
+            "pred_p90": 160.0,
+            "pred_p95": 165.0,
+            "error": -11.599999999999994,
+            "abs_error": 11.599999999999994,
+            "pct_error": -0.07682119205298009,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v13",
+            "actual": 118.0,
+            "pred_p05": 114.0,
+            "pred_p10": 120.0,
+            "pred_p50": 141.0,
+            "pred_p90": 161.53333333333333,
+            "pred_p95": 167.0,
+            "error": 23.0,
+            "abs_error": 23.0,
+            "pct_error": 0.19491525423728814,
+            "covered_90": true,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v14",
+            "actual": 156.0,
+            "pred_p05": 110.6,
+            "pred_p10": 116.8,
+            "pred_p50": 138.6,
+            "pred_p90": 159.53333333333336,
+            "pred_p95": 165.0,
+            "error": -17.400000000000006,
+            "abs_error": 17.400000000000006,
+            "pct_error": -0.11153846153846157,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "B",
+            "trial": "v15",
+            "actual": 111.0,
+            "pred_p05": 113.4,
+            "pred_p10": 119.8,
+            "pred_p50": 141.4,
+            "pred_p90": 161.8,
+            "pred_p95": 167.2,
+            "error": 30.400000000000006,
+            "abs_error": 30.400000000000006,
+            "pct_error": 0.2738738738738739,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "B",
+            "trial": "v16",
+            "actual": 168.0,
+            "pred_p05": 110.6,
+            "pred_p10": 116.6,
+            "pred_p50": 138.0,
+            "pred_p90": 158.8,
+            "pred_p95": 164.33333333333334,
+            "error": -30.0,
+            "abs_error": 30.0,
+            "pct_error": -0.17857142857142858,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v1",
+            "actual": 150.0,
+            "pred_p05": 104.4,
+            "pred_p10": 110.4,
+            "pred_p50": 133.2,
+            "pred_p90": 156.4,
+            "pred_p95": 163.0,
+            "error": -16.80000000000001,
+            "abs_error": 16.80000000000001,
+            "pct_error": -0.11200000000000007,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v2",
+            "actual": 134.0,
+            "pred_p05": 106.0,
+            "pred_p10": 111.66666666666667,
+            "pred_p50": 133.66666666666666,
+            "pred_p90": 156.4,
+            "pred_p95": 162.6,
+            "error": -0.3333333333333428,
+            "abs_error": 0.3333333333333428,
+            "pct_error": -0.002487562189054797,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v3",
+            "actual": 151.0,
+            "pred_p05": 105.4,
+            "pred_p10": 111.4,
+            "pred_p50": 133.0,
+            "pred_p90": 155.2,
+            "pred_p95": 161.33333333333334,
+            "error": -18.0,
+            "abs_error": 18.0,
+            "pct_error": -0.11920529801324503,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v4",
+            "actual": 157.0,
+            "pred_p05": 104.8,
+            "pred_p10": 110.06666666666666,
+            "pred_p50": 132.33333333333331,
+            "pred_p90": 155.0,
+            "pred_p95": 161.2,
+            "error": -24.666666666666686,
+            "abs_error": 24.666666666666686,
+            "pct_error": -0.15711252653927826,
+            "covered_90": true,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v5",
+            "actual": 100.0,
+            "pred_p05": 107.6,
+            "pred_p10": 113.4,
+            "pred_p50": 136.06666666666666,
+            "pred_p90": 158.86666666666665,
+            "pred_p95": 165.2,
+            "error": 36.06666666666666,
+            "abs_error": 36.06666666666666,
+            "pct_error": 0.36066666666666664,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v6",
+            "actual": 151.0,
+            "pred_p05": 104.0,
+            "pred_p10": 110.0,
+            "pred_p50": 132.66666666666666,
+            "pred_p90": 156.4,
+            "pred_p95": 163.0,
+            "error": -18.333333333333343,
+            "abs_error": 18.333333333333343,
+            "pct_error": -0.1214128035320089,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v7",
+            "actual": 128.0,
+            "pred_p05": 105.0,
+            "pred_p10": 111.0,
+            "pred_p50": 134.0,
+            "pred_p90": 157.4,
+            "pred_p95": 163.8,
+            "error": 6.0,
+            "abs_error": 6.0,
+            "pct_error": 0.046875,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v8",
+            "actual": 121.0,
+            "pred_p05": 106.4,
+            "pred_p10": 112.4,
+            "pred_p50": 134.8,
+            "pred_p90": 157.66666666666669,
+            "pred_p95": 164.0,
+            "error": 13.800000000000011,
+            "abs_error": 13.800000000000011,
+            "pct_error": 0.1140495867768596,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v9",
+            "actual": 104.0,
+            "pred_p05": 107.06666666666666,
+            "pred_p10": 113.0,
+            "pred_p50": 135.86666666666665,
+            "pred_p90": 158.73333333333335,
+            "pred_p95": 165.0,
+            "error": 31.866666666666646,
+            "abs_error": 31.866666666666646,
+            "pct_error": 0.3064102564102562,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v10",
+            "actual": 122.0,
+            "pred_p05": 105.2,
+            "pred_p10": 111.4,
+            "pred_p50": 134.8,
+            "pred_p90": 158.53333333333333,
+            "pred_p95": 164.73333333333335,
+            "error": 12.800000000000011,
+            "abs_error": 12.800000000000011,
+            "pct_error": 0.10491803278688534,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v11",
+            "actual": 135.0,
+            "pred_p05": 105.66666666666666,
+            "pred_p10": 111.2,
+            "pred_p50": 133.8,
+            "pred_p90": 157.0,
+            "pred_p95": 163.4,
+            "error": -1.1999999999999886,
+            "abs_error": 1.1999999999999886,
+            "pct_error": -0.008888888888888804,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v12",
+            "actual": 130.0,
+            "pred_p05": 106.6,
+            "pred_p10": 112.2,
+            "pred_p50": 134.2,
+            "pred_p90": 157.0,
+            "pred_p95": 163.2,
+            "error": 4.199999999999989,
+            "abs_error": 4.199999999999989,
+            "pct_error": 0.03230769230769222,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v13",
+            "actual": 134.0,
+            "pred_p05": 105.0,
+            "pred_p10": 111.0,
+            "pred_p50": 133.8,
+            "pred_p90": 157.4,
+            "pred_p95": 163.8,
+            "error": -0.19999999999998863,
+            "abs_error": 0.19999999999998863,
+            "pct_error": -0.001492537313432751,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v14",
+            "actual": 115.0,
+            "pred_p05": 106.0,
+            "pred_p10": 112.13333333333334,
+            "pred_p50": 135.0,
+            "pred_p90": 158.0,
+            "pred_p95": 164.2,
+            "error": 20.0,
+            "abs_error": 20.0,
+            "pct_error": 0.17391304347826086,
+            "covered_90": true,
+            "covered_80": true
+          },
+          {
+            "store": "C",
+            "trial": "v15",
+            "actual": 166.0,
+            "pred_p05": 103.8,
+            "pred_p10": 109.6,
+            "pred_p50": 131.4,
+            "pred_p90": 154.8,
+            "pred_p95": 161.0,
+            "error": -34.599999999999994,
+            "abs_error": 34.599999999999994,
+            "pct_error": -0.208433734939759,
+            "covered_90": false,
+            "covered_80": false
+          },
+          {
+            "store": "C",
+            "trial": "v16",
+            "actual": 144.0,
+            "pred_p05": 106.0,
+            "pred_p10": 111.53333333333333,
+            "pred_p50": 133.4,
+            "pred_p90": 156.0,
+            "pred_p95": 162.0,
+            "error": -10.599999999999994,
+            "abs_error": 10.599999999999994,
+            "pct_error": -0.07361111111111107,
+            "covered_90": true,
+            "covered_80": true
+          }
+        ]
+      }
+    },
+    "block_backtest": {
+      "n": 48,
+      "mae": 17.958333333333332,
+      "coverage_90": 0.8125,
+      "error_quantiles": {
+        "A": {
+          "0.05": -0.2481060606060606,
+          "0.1": -0.22727272727272727,
+          "0.15": -0.19886363636363635,
+          "0.25": -0.08522727272727273,
+          "0.5": 0.00011655011655011677,
+          "0.75": 0.18653846153846154,
+          "0.85": 0.2730769230769231,
+          "0.9": 0.2846153846153846,
+          "0.95": 0.3096153846153846
+        },
+        "B": {
+          "0.05": -0.261986301369863,
+          "0.1": -0.2465753424657534,
+          "0.15": -0.22773972602739725,
+          "0.25": -0.1917808219178082,
+          "0.5": 0.0,
+          "0.75": 0.07363013698630136,
+          "0.85": 0.10445205479452055,
+          "0.9": 0.13013698630136986,
+          "0.95": 0.16095890410958902
+        },
+        "C": {
+          "0.05": -0.23134328358208955,
+          "0.1": -0.1828358208955224,
+          "0.15": -0.13059701492537312,
+          "0.25": -0.0914179104477612,
+          "0.5": 0.0,
+          "0.75": 0.12126865671641791,
+          "0.85": 0.12686567164179105,
+          "0.9": 0.14925373134328357,
+          "0.95": 0.1884328358208955
+        }
+      },
+      "items": [
+        {
+          "store": "A",
+          "trial": "v1",
+          "actual": 102.0,
+          "pred_p05": 98.7,
+          "pred_p50": 132.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": -0.22727272727272727,
+          "abs_error": 30.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v2",
+          "actual": 132.0,
+          "pred_p05": 98.7,
+          "pred_p50": 130.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": 0.015384615384615385,
+          "abs_error": 2.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v3",
+          "actual": 164.0,
+          "pred_p05": 98.7,
+          "pred_p50": 130.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": 0.26153846153846155,
+          "abs_error": 34.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v4",
+          "actual": 177.0,
+          "pred_p05": 98.7,
+          "pred_p50": 130.0,
+          "pred_p90": 165.2,
+          "pred_p95": 166.6,
+          "relative_error": 0.36153846153846153,
+          "abs_error": 47.0,
+          "covered_90": false
+        },
+        {
+          "store": "A",
+          "trial": "v5",
+          "actual": 130.0,
+          "pred_p05": 98.7,
+          "pred_p50": 132.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": -0.015151515151515152,
+          "abs_error": 2.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v6",
+          "actual": 124.0,
+          "pred_p05": 98.7,
+          "pred_p50": 132.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": -0.06060606060606061,
+          "abs_error": 8.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v7",
+          "actual": 168.0,
+          "pred_p05": 98.7,
+          "pred_p50": 130.0,
+          "pred_p90": 165.2,
+          "pred_p95": 169.29999999999998,
+          "relative_error": 0.2923076923076923,
+          "abs_error": 38.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v8",
+          "actual": 151.0,
+          "pred_p05": 98.7,
+          "pred_p50": 130.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": 0.16153846153846155,
+          "abs_error": 21.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v9",
+          "actual": 122.0,
+          "pred_p05": 98.7,
+          "pred_p50": 132.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": -0.07575757575757576,
+          "abs_error": 10.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v10",
+          "actual": 102.0,
+          "pred_p05": 98.7,
+          "pred_p50": 132.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": -0.22727272727272727,
+          "abs_error": 30.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v11",
+          "actual": 117.0,
+          "pred_p05": 98.7,
+          "pred_p50": 132.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": -0.11363636363636363,
+          "abs_error": 15.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v12",
+          "actual": 137.0,
+          "pred_p05": 98.7,
+          "pred_p50": 130.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": 0.05384615384615385,
+          "abs_error": 7.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v13",
+          "actual": 91.0,
+          "pred_p05": 102.0,
+          "pred_p50": 132.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": -0.3106060606060606,
+          "abs_error": 41.0,
+          "covered_90": false
+        },
+        {
+          "store": "A",
+          "trial": "v14",
+          "actual": 166.0,
+          "pred_p05": 98.7,
+          "pred_p50": 130.0,
+          "pred_p90": 166.4,
+          "pred_p95": 170.7,
+          "relative_error": 0.27692307692307694,
+          "abs_error": 36.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v15",
+          "actual": 130.0,
+          "pred_p05": 98.7,
+          "pred_p50": 132.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": -0.015151515151515152,
+          "abs_error": 2.0,
+          "covered_90": true
+        },
+        {
+          "store": "A",
+          "trial": "v16",
+          "actual": 143.0,
+          "pred_p05": 98.7,
+          "pred_p50": 130.0,
+          "pred_p90": 167.2,
+          "pred_p95": 170.7,
+          "relative_error": 0.1,
+          "abs_error": 13.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v1",
+          "actual": 109.0,
+          "pred_p05": 108.9,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": -0.2534246575342466,
+          "abs_error": 37.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v2",
+          "actual": 120.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": -0.1780821917808219,
+          "abs_error": 26.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v3",
+          "actual": 148.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": 0.0136986301369863,
+          "abs_error": 2.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v4",
+          "actual": 104.0,
+          "pred_p05": 110.4,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": -0.2876712328767123,
+          "abs_error": 42.0,
+          "covered_90": false
+        },
+        {
+          "store": "B",
+          "trial": "v5",
+          "actual": 118.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": -0.1917808219178082,
+          "abs_error": 28.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v6",
+          "actual": 146.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": 0.0,
+          "abs_error": 0.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v7",
+          "actual": 162.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 164.4,
+          "pred_p95": 169.79999999999998,
+          "relative_error": 0.1095890410958904,
+          "abs_error": 16.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v8",
+          "actual": 159.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": 0.08904109589041095,
+          "abs_error": 13.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v9",
+          "actual": 174.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 160.8,
+          "pred_p95": 163.79999999999998,
+          "relative_error": 0.1917808219178082,
+          "abs_error": 28.0,
+          "covered_90": false
+        },
+        {
+          "store": "B",
+          "trial": "v10",
+          "actual": 146.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": 0.0,
+          "abs_error": 0.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v11",
+          "actual": 146.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": 0.0,
+          "abs_error": 0.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v12",
+          "actual": 151.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": 0.03424657534246575,
+          "abs_error": 5.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v13",
+          "actual": 118.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": -0.1917808219178082,
+          "abs_error": 28.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v14",
+          "actual": 156.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": 0.0684931506849315,
+          "abs_error": 10.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v15",
+          "actual": 111.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 165.6,
+          "pred_p95": 169.79999999999998,
+          "relative_error": -0.23972602739726026,
+          "abs_error": 35.0,
+          "covered_90": true
+        },
+        {
+          "store": "B",
+          "trial": "v16",
+          "actual": 168.0,
+          "pred_p05": 107.5,
+          "pred_p50": 146.0,
+          "pred_p90": 160.8,
+          "pred_p95": 165.6,
+          "relative_error": 0.1506849315068493,
+          "abs_error": 22.0,
+          "covered_90": false
+        },
+        {
+          "store": "C",
+          "trial": "v1",
+          "actual": 150.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": 0.11940298507462686,
+          "abs_error": 16.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v2",
+          "actual": 134.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": 0.0,
+          "abs_error": 0.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v3",
+          "actual": 151.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": 0.12686567164179105,
+          "abs_error": 17.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v4",
+          "actual": 157.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 151.0,
+          "pred_p95": 155.49999999999997,
+          "relative_error": 0.17164179104477612,
+          "abs_error": 23.0,
+          "covered_90": false
+        },
+        {
+          "store": "C",
+          "trial": "v5",
+          "actual": 100.0,
+          "pred_p05": 111.7,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": -0.2537313432835821,
+          "abs_error": 34.0,
+          "covered_90": false
+        },
+        {
+          "store": "C",
+          "trial": "v6",
+          "actual": 151.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": 0.12686567164179105,
+          "abs_error": 17.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v7",
+          "actual": 128.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": -0.04477611940298507,
+          "abs_error": 6.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v8",
+          "actual": 121.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": -0.09701492537313433,
+          "abs_error": 13.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v9",
+          "actual": 104.0,
+          "pred_p05": 110.5,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": -0.22388059701492538,
+          "abs_error": 30.0,
+          "covered_90": false
+        },
+        {
+          "store": "C",
+          "trial": "v10",
+          "actual": 122.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": -0.08955223880597014,
+          "abs_error": 12.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v11",
+          "actual": 135.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": 0.007462686567164179,
+          "abs_error": 1.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v12",
+          "actual": 130.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": -0.029850746268656716,
+          "abs_error": 4.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v13",
+          "actual": 134.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": 0.0,
+          "abs_error": 0.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v14",
+          "actual": 115.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": -0.1417910447761194,
+          "abs_error": 19.0,
+          "covered_90": true
+        },
+        {
+          "store": "C",
+          "trial": "v15",
+          "actual": 166.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 151.0,
+          "pred_p95": 152.79999999999998,
+          "relative_error": 0.23880597014925373,
+          "abs_error": 32.0,
+          "covered_90": false
+        },
+        {
+          "store": "C",
+          "trial": "v16",
+          "actual": 144.0,
+          "pred_p05": 102.8,
+          "pred_p50": 134.0,
+          "pred_p90": 154.6,
+          "pred_p95": 159.7,
+          "relative_error": 0.07462686567164178,
+          "abs_error": 10.0,
+          "covered_90": true
+        }
+      ]
+    },
+    "old_end_calibration": {
+      "A": {
+        "n_endpoints": 16,
+        "mean_actual_old_end": 24.25,
+        "quantiles": {
+          "0.1": 4.5,
+          "0.25": 12.5,
+          "0.5": 28.5,
+          "0.75": 37.25,
+          "0.9": 39.0
+        },
+        "leave_one_out_mae": 15.875,
+        "coverage_80_empirical": 0.75
+      },
+      "B": {
+        "n_endpoints": 16,
+        "mean_actual_old_end": 19.0,
+        "quantiles": {
+          "0.1": 3.0,
+          "0.25": 9.5,
+          "0.5": 19.5,
+          "0.75": 25.25,
+          "0.9": 36.5
+        },
+        "leave_one_out_mae": 10.375,
+        "coverage_80_empirical": 0.6875
+      },
+      "C": {
+        "n_endpoints": 16,
+        "mean_actual_old_end": 21.6875,
+        "quantiles": {
+          "0.1": 2.5,
+          "0.25": 7.0,
+          "0.5": 23.0,
+          "0.75": 34.0,
+          "0.9": 39.5
+        },
+        "leave_one_out_mae": 14.6875,
+        "coverage_80_empirical": 0.6875
+      }
+    }
+  },
+  "trace": {
+    "sku": "dr1",
+    "entries": [
+      {
+        "time": "2026-09-01T08:00:00",
+        "kind": "期初",
+        "ref": "opening:A",
+        "store": "A",
+        "qty": 120,
+        "old_bounds_recorded": [
+          50,
+          100
+        ],
+        "old_range_after": [
+          50,
+          100
+        ],
+        "sellable_total_after": 120
+      },
+      {
+        "time": "2026-09-01T08:00:00",
+        "kind": "期初",
+        "ref": "opening:B",
+        "store": "B",
+        "qty": 110,
+        "old_bounds_recorded": [
+          5,
+          40
+        ],
+        "old_range_after": [
+          5,
+          40
+        ],
+        "sellable_total_after": 110
+      },
+      {
+        "time": "2026-09-01T08:00:00",
+        "kind": "期初",
+        "ref": "opening:C",
+        "store": "C",
+        "qty": 85,
+        "old_bounds_recorded": [
+          20,
+          60
+        ],
+        "old_range_after": [
+          20,
+          60
+        ],
+        "sellable_total_after": 85
+      },
+      {
+        "time": "2026-09-01T12:00:00",
+        "known_at": "2026-09-01T20:00:00",
+        "kind": "收银",
+        "ref": "m1",
+        "store": "A",
+        "qty": 24,
+        "old_bounds_recorded": [
+          0,
+          24
+        ],
+        "old_range_after": [
+          26,
+          96
+        ],
+        "sellable_total_after": 96,
+        "inspection_units": 0
+      },
+      {
+        "time": "2026-09-01T14:00:00",
+        "known_at": "2026-09-01T20:00:00",
+        "kind": "收银",
+        "ref": "m2",
+        "store": "B",
+        "qty": 20,
+        "old_bounds_recorded": [
+          0,
+          20
+        ],
+        "old_range_after": [
+          0,
+          40
+        ],
+        "sellable_total_after": 90,
+        "inspection_units": 0
+      },
+      {
+        "time": "2026-09-02T07:00:00",
+        "kind": "调拨取走",
+        "ref": "x1",
+        "from_store": "A",
+        "to_store": "B",
+        "qty": 36,
+        "shipment_old_range": [
+          10,
+          36
+        ],
+        "state": "在途"
+      },
+      {
+        "time": "2026-09-02T10:00:00",
+        "known_at": "2026-09-02T11:00:00",
+        "kind": "实盘",
+        "ref": "n1",
+        "store": "A",
+        "counted_old_new": [
+          43,
+          17
+        ],
+        "old_range_after": [
+          43,
+          43
+        ],
+        "sellable_total_after": 60
+      },
+      {
+        "time": "2026-09-03T11:00:00",
+        "kind": "调拨送达",
+        "ref": "x1",
+        "from_store": "A",
+        "to_store": "B",
+        "qty": 36,
+        "shipment_old_range": [
+          10,
+          36
+        ],
+        "state": "已送达待交接确认"
+      },
+      {
+        "time": "2026-09-03T12:00:00",
+        "known_at": "2026-09-03T20:00:00",
+        "kind": "待验退回",
+        "ref": "m3",
+        "store": "B",
+        "qty": 8,
+        "old_bounds_recorded": [
+          0,
+          8
+        ],
+        "old_range_after": [
+          10,
+          76
+        ],
+        "sellable_total_after": 126,
+        "inspection_units": 8
+      },
+      {
+        "time": "2026-09-03T14:00:00",
+        "known_at": "2026-09-03T14:00:00",
+        "kind": "收银",
+        "ref": "m7",
+        "store": "B",
+        "qty": 20,
+        "old_bounds_recorded": [
+          0,
+          20
+        ],
+        "old_range_after": [
+          0,
+          76
+        ],
+        "sellable_total_after": 106,
+        "inspection_units": 8
+      },
+      {
+        "time": "2026-09-03T15:00:00",
+        "known_at": "2026-09-05T08:00:00",
+        "kind": "实盘",
+        "ref": "n2",
+        "store": "B",
+        "counted_old_new": [
+          33,
+          73
+        ],
+        "old_range_after": [
+          33,
+          33
+        ],
+        "sellable_total_after": 106
+      },
+      {
+        "time": "2026-09-04T08:00:00",
+        "known_at": "2026-09-04T08:00:00",
+        "kind": "收货",
+        "ref": "m6",
+        "store": "C",
+        "qty": 40,
+        "old_bounds_recorded": [
+          12,
+          31
+        ],
+        "old_range_after": [
+          32,
+          91
+        ],
+        "sellable_total_after": 125,
+        "inspection_units": 0
+      },
+      {
+        "time": "2026-09-04T08:00:00",
+        "kind": "调拨取走",
+        "ref": "x2",
+        "from_store": "B",
+        "to_store": "C",
+        "qty": 14,
+        "shipment_old_range": [
+          0,
+          14
+        ],
+        "state": "在途"
+      },
+      {
+        "time": "2026-09-05T08:00:00",
+        "kind": "交接确认",
+        "ref": "x1",
+        "from_store": "A",
+        "to_store": "B",
+        "qty": 36,
+        "shipment_old_range": [
+          10,
+          36
+        ],
+        "state": "已交接确认"
+      },
+      {
+        "time": "2026-09-05T09:00:00",
+        "known_at": "2026-09-08T20:00:00",
+        "kind": "收银",
+        "ref": "m4",
+        "store": "A",
+        "qty": 5,
+        "old_bounds_recorded": [
+          0,
+          5
+        ],
+        "old_range_after": [
+          38,
+          43
+        ],
+        "sellable_total_after": 55,
+        "inspection_units": 0
+      },
+      {
+        "time": "2026-09-06T17:00:00",
+        "known_at": "2026-09-06T17:00:00",
+        "kind": "撤签",
+        "ref": "m5",
+        "store": "A",
+        "qty": 28,
+        "old_bounds_recorded": [
+          28,
+          28
+        ],
+        "old_range_after": [
+          10,
+          15
+        ],
+        "sellable_total_after": 27,
+        "inspection_units": 0
+      }
+    ],
+    "count_effects": [
+      {
+        "count": "n1",
+        "store": "A",
+        "at": "2026-09-02T10:00:00",
+        "known_at": "2026-09-02T11:00:00",
+        "before_range": [
+          0,
+          60
+        ],
+        "after_range": [
+          43,
+          43
+        ],
+        "ambiguity_reduced_by": 60,
+        "counted_old_new": [
+          43,
+          17
+        ]
+      },
+      {
+        "count": "n2",
+        "store": "B",
+        "at": "2026-09-03T15:00:00",
+        "known_at": "2026-09-05T08:00:00",
+        "before_range": [
+          0,
+          76
+        ],
+        "after_range": [
+          33,
+          33
+        ],
+        "ambiguity_reduced_by": 76,
+        "counted_old_new": [
+          33,
+          73
+        ]
+      }
+    ],
+    "snapshots": [
+      {
+        "label": "HQ决策时点",
+        "physical_at": "2026-09-05T08:00:00",
+        "knowledge_as_of": "2026-09-05T08:00",
+        "stores": [
+          {
+            "store": "A",
+            "sku": "dr1",
+            "at": "2026-09-05T08:00:00",
+            "as_of": "2026-09-05T08:00:00",
+            "sellable_total": 60,
+            "old_min": 43,
+            "old_max": 43,
+            "confirmed_old": 43,
+            "possible_extra_old": 0,
+            "new_min": 17,
+            "new_max": 17,
+            "inspection_units": 0,
+            "exact": true
+          },
+          {
+            "store": "B",
+            "sku": "dr1",
+            "at": "2026-09-05T08:00:00",
+            "as_of": "2026-09-05T08:00:00",
+            "sellable_total": 92,
+            "old_min": 19,
+            "old_max": 33,
+            "confirmed_old": 19,
+            "possible_extra_old": 14,
+            "new_min": 59,
+            "new_max": 73,
+            "inspection_units": 8,
+            "exact": false
+          },
+          {
+            "store": "C",
+            "sku": "dr1",
+            "at": "2026-09-05T08:00:00",
+            "as_of": "2026-09-05T08:00:00",
+            "sellable_total": 125,
+            "old_min": 32,
+            "old_max": 91,
+            "confirmed_old": 32,
+            "possible_extra_old": 59,
+            "new_min": 34,
+            "new_max": 93,
+            "inspection_units": 0,
+            "exact": false
+          }
+        ]
+      },
+      {
+        "label": "A期限",
+        "physical_at": "2026-09-06T18:00:00",
+        "knowledge_as_of": null,
+        "stores": [
+          {
+            "store": "A",
+            "sku": "dr1",
+            "at": "2026-09-06T18:00:00",
+            "as_of": null,
+            "sellable_total": 27,
+            "old_min": 10,
+            "old_max": 15,
+            "confirmed_old": 10,
+            "possible_extra_old": 5,
+            "new_min": 12,
+            "new_max": 17,
+            "inspection_units": 0,
+            "exact": false
+          },
+          {
+            "store": "B",
+            "sku": "dr1",
+            "at": "2026-09-06T18:00:00",
+            "as_of": null,
+            "sellable_total": 92,
+            "old_min": 19,
+            "old_max": 33,
+            "confirmed_old": 19,
+            "possible_extra_old": 14,
+            "new_min": 59,
+            "new_max": 73,
+            "inspection_units": 8,
+            "exact": false
+          },
+          {
+            "store": "C",
+            "sku": "dr1",
+            "at": "2026-09-06T18:00:00",
+            "as_of": null,
+            "sellable_total": 125,
+            "old_min": 32,
+            "old_max": 91,
+            "confirmed_old": 32,
+            "possible_extra_old": 59,
+            "new_min": 34,
+            "new_max": 93,
+            "inspection_units": 0,
+            "exact": false
+          }
+        ]
+      },
+      {
+        "label": "B期限",
+        "physical_at": "2026-09-06T18:00:00",
+        "knowledge_as_of": null,
+        "stores": [
+          {
+            "store": "A",
+            "sku": "dr1",
+            "at": "2026-09-06T18:00:00",
+            "as_of": null,
+            "sellable_total": 27,
+            "old_min": 10,
+            "old_max": 15,
+            "confirmed_old": 10,
+            "possible_extra_old": 5,
+            "new_min": 12,
+            "new_max": 17,
+            "inspection_units": 0,
+            "exact": false
+          },
+          {
+            "store": "B",
+            "sku": "dr1",
+            "at": "2026-09-06T18:00:00",
+            "as_of": null,
+            "sellable_total": 92,
+            "old_min": 19,
+            "old_max": 33,
+            "confirmed_old": 19,
+            "possible_extra_old": 14,
+            "new_min": 59,
+            "new_max": 73,
+            "inspection_units": 8,
+            "exact": false
+          },
+          {
+            "store": "C",
+            "sku": "dr1",
+            "at": "2026-09-06T18:00:00",
+            "as_of": null,
+            "sellable_total": 125,
+            "old_min": 32,
+            "old_max": 91,
+            "confirmed_old": 32,
+            "possible_extra_old": 59,
+            "new_min": 34,
+            "new_max": 93,
+            "inspection_units": 0,
+            "exact": false
+          }
+        ]
+      },
+      {
+        "label": "C期限",
+        "physical_at": "2026-09-07T18:00:00",
+        "knowledge_as_of": null,
+        "stores": [
+          {
+            "store": "A",
+            "sku": "dr1",
+            "at": "2026-09-07T18:00:00",
+            "as_of": null,
+            "sellable_total": 27,
+            "old_min": 10,
+            "old_max": 15,
+            "confirmed_old": 10,
+            "possible_extra_old": 5,
+            "new_min": 12,
+            "new_max": 17,
+            "inspection_units": 0,
+            "exact": false
+          },
+          {
+            "store": "B",
+            "sku": "dr1",
+            "at": "2026-09-07T18:00:00",
+            "as_of": null,
+            "sellable_total": 92,
+            "old_min": 19,
+            "old_max": 33,
+            "confirmed_old": 19,
+            "possible_extra_old": 14,
+            "new_min": 59,
+            "new_max": 73,
+            "inspection_units": 8,
+            "exact": false
+          },
+          {
+            "store": "C",
+            "sku": "dr1",
+            "at": "2026-09-07T18:00:00",
+            "as_of": null,
+            "sellable_total": 125,
+            "old_min": 32,
+            "old_max": 91,
+            "confirmed_old": 32,
+            "possible_extra_old": 59,
+            "new_min": 34,
+            "new_max": 93,
+            "inspection_units": 0,
+            "exact": false
+          }
+        ]
+      }
+    ],
+    "actual_removals": [
+      {
+        "event": "m5",
+        "store": "A",
+        "at": "2026-09-06T17:00:00",
+        "known_at": "2026-09-06T17:00:00",
+        "qty": 28,
+        "old_qty": 28
+      }
+    ]
+  },
+  "retrospective": {
+    "late_events": [
+      {
+        "event": "m4",
+        "store": "A",
+        "kind": "收银",
+        "event_at": "2026-09-05T09:00:00",
+        "known_at": "2026-09-08T20:00:00",
+        "qty": 5,
+        "applied_in_event_time_order": true,
+        "range_after_event": [
+          38,
+          43
+        ],
+        "total_after_event": 55,
+        "effect_on_current_sellable": "none_to_removed_units__chronological_balance_only"
+      },
+      {
+        "event": "m5",
+        "store": "A",
+        "kind": "撤签",
+        "event_at": "2026-09-06T17:00:00",
+        "known_at": "2026-09-06T17:00:00",
+        "qty": 28,
+        "applied_in_event_time_order": true,
+        "range_after_event": [
+          10,
+          15
+        ],
+        "total_after_event": 27,
+        "effect_on_current_sellable": "none_to_removed_units__chronological_balance_only"
+      }
+    ],
+    "stores": [
+      {
+        "store": "A",
+        "deadline": "2026-09-06T18:00:00",
+        "forecast_demand_median_at_decision": 71.67508417508417,
+        "observed_window_sales_event_time": 5,
+        "window_sale_record_count": 1,
+        "outcome_complete_in_data": true,
+        "demand_forecast_error_median_minus_observed": 66.67508417508417,
+        "actual_removed_by_deadline": 28,
+        "old_range_after_chronological_events_and_removal": [
+          10,
+          15
+        ],
+        "note": "后到销售用于回算误差；已撤下数量不会被加回当前可售量"
+      },
+      {
+        "store": "B",
+        "deadline": "2026-09-06T18:00:00",
+        "forecast_demand_median_at_decision": 81.11111111111111,
+        "observed_window_sales_event_time": 0,
+        "window_sale_record_count": 0,
+        "outcome_complete_in_data": false,
+        "demand_forecast_error_median_minus_observed": null,
+        "actual_removed_by_deadline": 0,
+        "old_range_after_chronological_events_and_removal": [
+          19,
+          33
+        ],
+        "note": "后到销售用于回算误差；已撤下数量不会被加回当前可售量"
+      },
+      {
+        "store": "C",
+        "deadline": "2026-09-07T18:00:00",
+        "forecast_demand_median_at_decision": 111.66666666666667,
+        "observed_window_sales_event_time": 0,
+        "window_sale_record_count": 0,
+        "outcome_complete_in_data": false,
+        "demand_forecast_error_median_minus_observed": null,
+        "actual_removed_by_deadline": 0,
+        "old_range_after_chronological_events_and_removal": [
+          32,
+          91
+        ],
+        "note": "后到销售用于回算误差；已撤下数量不会被加回当前可售量"
+      }
+    ]
+  }
+}
